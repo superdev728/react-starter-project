@@ -1,10 +1,16 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from 'pages/Home'
 import About from 'pages/About'
-import logo from 'assets/logo.svg'
+import Header from 'components/Header/Header'
+import GameModes from 'components/GameModes/GameModes'
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import './assets/css/main.css'
 
 // REDUX
 // Import store and wrap app with redux provider
@@ -13,16 +19,21 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>React Starter Kit</h2>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-          </Switch>
-        </Router>
-      </header>
+      <Header />
+      <div className="d-flex">
+        <div className="gamemode-section">
+          <GameModes />
+        </div>
+        <div className="component-section">
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+            </Switch>
+          </Router>
+        </div>
+        {/* <div></div> */}
+      </div>
     </div>
   )
 }
